@@ -34,9 +34,14 @@ Headers and CMake package for rocJPEG.
 %build
 export CXX=hipcc
 export CC=clang
-%cmake %{rocm_cmake_fhs} \
+CXXFLAGS=$(printf '%s' "%{optflags}" | sed 's/-mfpmath=sse//g')
+export CXXFLAGS
+%cmake %{rocm_cmake_fhs} %{rocm_cmake_gpu_targets} \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_CXX_COMPILER=hipcc \
+	-DCMAKE_HIP_COMPILER=hipcc \
+	-DCMAKE_HIP_ARCHITECTURES="%{rocm_gpu_targets}" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	-DROCM_PATH=%{_prefix} \
 	-DCMAKE_PREFIX_PATH=%{_prefix} \
 	-G Ninja
@@ -46,10 +51,9 @@ export CC=clang
 %ninja_install -C build
 
 %files
-%license LICENSE.md
-%doc README.md
+%license LICENSE
+%doc README.md CHANGELOG.md
 %{_libdir}/librocjpeg.so.*
-%{_bindir}/rocjpeg*
 
 %files devel
 %{_includedir}/rocjpeg/
