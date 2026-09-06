@@ -49,6 +49,9 @@ export CXXFLAGS
 
 %install
 %ninja_install -C build
+# Samples/tests/images are not part of the runtime package.
+rm -rf %{buildroot}%{_datadir}/rocjpeg
+rm -f %{buildroot}%{_docdir}/rocjpeg/LICENSE
 
 %files
 %license LICENSE
