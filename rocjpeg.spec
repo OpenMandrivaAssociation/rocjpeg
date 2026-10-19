@@ -1,13 +1,13 @@
-# JPEG decode on GPU. TheRock 10.0.
+# JPEG decode on GPU. TheRock 10.1.
 
 Name:		rocjpeg
-Version:	10.0.0
+Version:	10.1.0
 Release:	1
 Summary:	ROCm JPEG decode library
 License:	MIT
 Group:		System/Libraries
 URL:		https://github.com/ROCm/rocm-systems
-Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-10.0/rocjpeg.tar.gz#/rocjpeg-%{version}.tar.gz
+Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocjpeg.tar.gz#/rocjpeg-%{version}.tar.gz
 
 BuildRequires:	rocm-rpm-macros
 BuildRequires:	cmake
