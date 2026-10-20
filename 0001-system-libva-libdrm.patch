@@ -1,0 +1,28 @@
+--- a/cmake/FindLibva.cmake	2026-10-20 12:31:22.244183032 +0200
++++ b/cmake/FindLibva.cmake	2026-10-20 12:32:46.812649482 +0200
+@@ -27,9 +27,9 @@
+   list(APPEND _libva_library_hints ${CMAKE_LIBRARY_PATH})
+ endif()
+ 
+-find_library(LIBVA_LIBRARY NAMES va HINTS ${_libva_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib NO_DEFAULT_PATH)
+-find_library(LIBVA_DRM_LIBRARY NAMES va-drm HINTS ${_libva_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib NO_DEFAULT_PATH)
+-find_path(LIBVA_INCLUDE_DIR NAMES va/va.h PATHS ${_libva_include_hints} ${ROCM_PATH}/lib/rocm_sysdeps/include NO_DEFAULT_PATH)
++find_library(LIBVA_LIBRARY NAMES va HINTS ${_libva_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib)
++find_library(LIBVA_DRM_LIBRARY NAMES va-drm HINTS ${_libva_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib)
++find_path(LIBVA_INCLUDE_DIR NAMES va/va.h PATHS ${_libva_include_hints} ${ROCM_PATH}/lib/rocm_sysdeps/include)
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(Libva DEFAULT_MSG LIBVA_INCLUDE_DIR LIBVA_LIBRARY LIBVA_DRM_LIBRARY)
+--- a/cmake/FindLibdrm_amdgpu.cmake	2026-10-20 12:31:22.256968670 +0200
++++ b/cmake/FindLibdrm_amdgpu.cmake	2026-10-20 12:32:46.816549213 +0200
+@@ -27,8 +27,8 @@
+   list(APPEND _libdrm_amdgpu_library_hints ${CMAKE_LIBRARY_PATH})
+ endif()
+ 
+-find_library(LIBDRM_AMDGPU_LIBRARY NAMES drm_amdgpu HINTS ${_libdrm_amdgpu_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib NO_DEFAULT_PATH)
+-find_path(LIBDRM_AMDGPU_INCLUDE_DIR NAMES libdrm/amdgpu.h libdrm/amdgpu_drm.h PATHS ${_libdrm_amdgpu_include_hints} ${ROCM_PATH}/lib/rocm_sysdeps/include NO_DEFAULT_PATH)
++find_library(LIBDRM_AMDGPU_LIBRARY NAMES drm_amdgpu HINTS ${_libdrm_amdgpu_library_hints} ${ROCM_PATH}/lib/rocm_sysdeps/lib)
++find_path(LIBDRM_AMDGPU_INCLUDE_DIR NAMES libdrm/amdgpu.h libdrm/amdgpu_drm.h PATHS ${_libdrm_amdgpu_include_hints} ${ROCM_PATH}/lib/rocm_sysdeps/include)
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(Libdrm_amdgpu DEFAULT_MSG LIBDRM_AMDGPU_INCLUDE_DIR LIBDRM_AMDGPU_LIBRARY)

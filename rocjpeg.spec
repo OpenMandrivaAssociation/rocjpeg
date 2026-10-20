@@ -8,6 +8,9 @@ License:	MIT
 Group:		System/Libraries
 URL:		https://github.com/ROCm/rocm-systems
 Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocjpeg.tar.gz#/rocjpeg-%{version}.tar.gz
+# TheRock find modules pass NO_DEFAULT_PATH and only look in
+# ${ROCM_PATH}/lib/rocm_sysdeps, which a distro install does not have.
+Patch0:		0001-system-libva-libdrm.patch
 
 BuildRequires:	rocm-rpm-macros
 BuildRequires:	cmake
